@@ -6,11 +6,22 @@ copr_project_name=luajit
 rpm_name=luajit
 arch=x86_64
 
-copr_project_description="a Just-In-Time Compiler for Lua"
+copr_project_description="a Just-In-Time Compiler for Lua
+
+This package uses the OpenResty's fork of LuaJIT 2.
+https://github.com/openresty/luajit2
+"
 
 copr_project_instructions="\`\`\`
+version=\$(rpm -q --qf "%{VERSION}" \$(rpm -q --whatprovides redhat-release))
 \`\`\`
-sudo curl -sL -o /etc/yum.repos.d/${COPR_USERNAME}-${copr_project_name}.repo https://copr.fedoraproject.org/coprs/${COPR_USERNAME}/${copr_project_name}/repo/epel-6/${COPR_USERNAME}-${copr_project_name}-epel-6.repo
+
+\`\`\`
+ver=\${version:0:1}
+\`\`\`
+
+\`\`\`
+sudo curl -sL -o /etc/yum.repos.d/${COPR_USERNAME}-${copr_project_name}.repo https://copr.fedoraproject.org/coprs/${COPR_USERNAME}/${copr_project_name}/repo/epel-\${ver}/${COPR_USERNAME}-${copr_project_name}-epel-\${ver}.repo
 \`\`\`
 
 \`\`\`
@@ -18,7 +29,7 @@ sudo yum -y install ${rpm_name}
 \`\`\`"
 
 spec_file=${rpm_name}.spec
-mock_chroots="epel-6-${arch}"
+mock_chroots="epel-6-${arch} epel-7-${arch}"
 
 usage() {
   cat <<'EOF' 1>&2

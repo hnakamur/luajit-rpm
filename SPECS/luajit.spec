@@ -1,10 +1,14 @@
+%define luajit_version 2.1
+%define luajit_date_version 20161104
+%define luajit_bin_version 2.1.0-beta2
+
 Name:           luajit
-Version:        2.0.4
-Release:        3%{?dist}
+Version:        %{luajit_version}.%{luajit_date_version}
+Release:        1%{?dist}
 Summary:        Just-In-Time Compiler for Lua
 License:        MIT
 URL:            http://luajit.org/
-Source0:        http://luajit.org/download/LuaJIT-%{version}.tar.gz
+Source0:        https://github.com/openresty/luajit2/archive/v%{luajit_version}-%{luajit_date_version}.tar.gz
 
 %if 0%{?rhel}
 ExclusiveArch:  %{ix86} x86_64
@@ -15,6 +19,9 @@ LuaJIT implements the full set of language features defined by Lua 5.1.
 The virtual machine (VM) is API- and ABI-compatible to the standard
 Lua interpreter and can be deployed as a drop-in replacement.
 
+This package uses the OpenResty's fork of LuaJIT 2.
+https://github.com/openresty/luajit2
+
 %package devel
 Summary:        Development files for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
@@ -23,7 +30,7 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 This package contains development files for %{name}.
 
 %prep
-%setup -q -n LuaJIT-%{version}
+%setup -q -n luajit2-%{luajit_version}-%{luajit_date_version}
 echo '#!/bin/sh' > ./configure
 chmod +x ./configure
 
@@ -64,18 +71,21 @@ find %{buildroot} -type f -name *.a -delete
 %license COPYRIGHT
 %doc README
 %{_bindir}/%{name}
-%{_bindir}/%{name}-%{version}
+%{_bindir}/%{name}-%{luajit_bin_version}
 %{_libdir}/libluajit*.so.*
 %{_mandir}/man1/luajit*
-%{_datadir}/%{name}-%{version}/
+%{_datadir}/%{name}-%{luajit_bin_version}/
 
 %files devel
 %doc _tmp_html/html/
-%{_includedir}/luajit-2.0/
+%{_includedir}/luajit-2.1/
 %{_libdir}/libluajit*.so
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
+* Thu Nov 10 2016 Hiroaki Nakamura <hnakamur@gmail.com> - 2.1.20161104-1
+- Switch to the OpenResty's fork of LuaJIT 2, version 2.1-20161104
+
 * Fri Aug 07 2015 Oliver Haessler <oliver@redhat.com> - 2.0.4-3
 - only build x86_64 on EPEL as luajit has no support for ppc64
 
