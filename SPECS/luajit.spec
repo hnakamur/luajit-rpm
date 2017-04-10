@@ -1,5 +1,5 @@
 %define luajit_version 2.1
-%define luajit_date_version 20161104
+%define luajit_date_version 20170405
 %define luajit_bin_version 2.1.0-beta2
 
 Name:           luajit
@@ -83,6 +83,9 @@ find %{buildroot} -type f -name *.a -delete
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
+* Mon Apr 10 2017 Hiroaki Nakamura <hnakamur@gmail.com> - 2.1.20170405-1
+- 2.1.20170405
+
 * Thu Nov 10 2016 Hiroaki Nakamura <hnakamur@gmail.com> - 2.1.20161104-1
 - Switch to the OpenResty's fork of LuaJIT 2, version 2.1-20161104
 
