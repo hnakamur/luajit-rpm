@@ -1,6 +1,6 @@
 %define luajit_version 2.1
 %define luajit_date_version 20170808
-%define luajit_bin_version 2.1.0-20170808
+%define luajit_bin_version 2.1.0-beta3
 
 Name:           luajit
 Version:        %{luajit_version}.%{luajit_date_version}
