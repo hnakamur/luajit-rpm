@@ -1,6 +1,6 @@
 %define luajit_version 2.1
-%define luajit_date_version 20170517
-%define luajit_bin_version 2.1.0-beta3
+%define luajit_date_version 20170808
+%define luajit_bin_version 2.1.0-20170808
 
 Name:           luajit
 Version:        %{luajit_version}.%{luajit_date_version}
@@ -8,7 +8,7 @@ Release:        1%{?dist}
 Summary:        Just-In-Time Compiler for Lua
 License:        MIT
 URL:            http://luajit.org/
-Source0:        https://github.com/openresty/luajit2/archive/v%{luajit_version}-%{luajit_date_version}.tar.gz
+Source0:        https://github.com/openresty/luajit2/archive/v%{luajit_version}-%{luajit_date_version}.tar.gz#/luajit2-%{luajit_version}-%{luajit_date_version}.tar.gz
 
 %if 0%{?rhel}
 ExclusiveArch:  %{ix86} x86_64
@@ -83,6 +83,9 @@ find %{buildroot} -type f -name *.a -delete
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
+* Wed Aug 09 2017 Hiroaki Nakamura <hnakamur@gmail.com> - 2.1.20170808-1
+- 2.1.20170808
+
 * Mon Jun 12 2017 Hiroaki Nakamura <hnakamur@gmail.com> - 2.1.20170517-1
 - 2.1.20170517
 
