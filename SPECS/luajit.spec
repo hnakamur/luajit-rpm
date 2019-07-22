@@ -1,5 +1,5 @@
 %define luajit_version 2.1
-%define luajit_date_version 20190530
+%define luajit_date_version 20190626
 %define luajit_bin_version 2.1.0-beta3
 
 Name:           luajit
@@ -83,6 +83,9 @@ find %{buildroot} -type f -name *.a -delete
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
+* Mon Jul 22 2019 Hiroaki Nakamura <hnakamur@gmail.com> - 2.1.20190626-1
+- 2.1.20190626
+
 * Wed Jun 26 2019 Hiroaki Nakamura <hnakamur@gmail.com> - 2.1.20190530-1
 - 2.1.20190530
 
