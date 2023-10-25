@@ -1,6 +1,6 @@
 %define luajit_version 2.1
-%define luajit_date_version 20220411
-%define luajit_bin_version 2.1.0-beta3
+%define luajit_date_version 20231006
+%define luajit_bin_version 2.1
 
 Name:           luajit
 Version:        %{luajit_version}.%{luajit_date_version}
@@ -71,7 +71,7 @@ find %{buildroot} -type f -name *.a -delete
 %license COPYRIGHT
 %doc README
 %{_bindir}/%{name}
-%{_bindir}/%{name}-%{luajit_bin_version}
+%{_bindir}/%{name}-%{luajit_bin_version}.*
 %{_libdir}/libluajit*.so.*
 %{_mandir}/man1/luajit*
 %{_datadir}/%{name}-%{luajit_bin_version}/
@@ -83,6 +83,9 @@ find %{buildroot} -type f -name *.a -delete
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
+* Wed Oct 25 2023 Hiroaki Nakamura <hnakamur@gmail.com> - 2.1.20231006-1
+- 2.1.20231006
+
 * Wed Jun 22 2022 Hiroaki Nakamura <hnakamur@gmail.com> - 2.1.20220411-1
 - 2.1.20220411
 
